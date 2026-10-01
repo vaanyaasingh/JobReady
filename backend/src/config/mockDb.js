@@ -1,3 +1,5 @@
+import bcrypt from 'bcryptjs';
+
 // In-memory mock database for development
 // This allows the app to function without a real MongoDB instance
 
@@ -38,9 +40,8 @@ class MockDatabase {
             // Ensure comparePassword method exists
             if (!this.users[existingIndex].comparePassword) {
                 this.users[existingIndex].comparePassword = async function (candidatePassword) {
-                    // If password is hashed (starts with $2b$), use bcrypt
-                    if (this.password && this.password.startsWith('$2b$')) {
-                        const bcrypt = require('bcrypt');
+                    // If password is hashed (bcrypt hash), use bcrypt
+                    if (this.password && /^\$2[aby]\$/.test(this.password)) {
                         return await bcrypt.compare(candidatePassword, this.password);
                     }
                     // Otherwise, direct comparison (for testing)
@@ -62,9 +63,8 @@ class MockDatabase {
                 createdAt: new Date(),
                 updatedAt: new Date(),
                 comparePassword: async function (candidatePassword) {
-                    // If password is hashed (starts with $2b$), use bcrypt
-                    if (this.password && this.password.startsWith('$2b$')) {
-                        const bcrypt = require('bcrypt');
+                    // If password is hashed (bcrypt hash), use bcrypt
+                    if (this.password && /^\$2[aby]\$/.test(this.password)) {
                         return await bcrypt.compare(candidatePassword, this.password);
                     }
                     // Otherwise, direct comparison (for testing)
