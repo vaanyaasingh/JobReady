@@ -3,8 +3,6 @@
  * Generates PDF from resume HTML and manages saved resumes
  */
 
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
 export interface SavedResume {
   id: string;
@@ -35,6 +33,12 @@ export async function generateResumePDF(
     // Wait a bit for any animations or rendering to complete
     await new Promise(resolve => setTimeout(resolve, 500));
 
+    // Load PDF libraries only when a resume is actually generated
+    const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+      import("html2canvas"),
+      import("jspdf"),
+    ]);
+
     // Create canvas from HTML with better options
     const canvas = await html2canvas(element, {
       scale: 2,
@@ -47,7 +51,7 @@ export async function generateResumePDF(
       windowHeight: element.scrollHeight,
       allowTaint: false,
       removeContainer: false,
-    } as any);
+    } as Parameters<typeof html2canvas>[1]);
 
     if (!canvas) {
       throw new Error("Failed to create canvas from resume element");

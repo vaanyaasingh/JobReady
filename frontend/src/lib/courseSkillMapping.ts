@@ -86,7 +86,7 @@ export function getSuggestedSkills(userId: string | null): SuggestedSkill[] {
     const suggestedSkills: SuggestedSkill[] = [];
 
     // Map completed courses to skills
-    Object.entries(progress).forEach(([courseId, courseData]: [string, any]) => {
+    Object.entries(progress).forEach(([courseId, courseData]: [string, { status?: string }]) => {
       if (courseData.status === "completed" && courseDetailMapping[courseId]) {
         suggestedSkills.push(courseDetailMapping[courseId]);
       }

@@ -18,9 +18,16 @@ import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 
+interface QuizQuestion {
+  question: string;
+  options?: string[];
+  correctAnswer?: number;
+  explanation?: string;
+}
+
 interface AIResponse {
   success: boolean;
-  content: string | any[];
+  content: string | QuizQuestion[];
   mode: string;
   metadata?: {
     courseName: string;
@@ -95,7 +102,7 @@ export default function AITutor() {
     try {
       const endpoint = mode === "quiz" ? "/ai/quiz" : mode === "notes" ? "/ai/notes" : "/ai/doubt";
 
-      const requestBody: any = {
+      const requestBody: Record<string, string> = {
         courseName,
         topic,
         language, // Include language in all requests
@@ -149,7 +156,7 @@ export default function AITutor() {
             </p>
           </div>
 
-          {response.content.map((question: any, index: number) => (
+          {response.content.map((question, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
@@ -272,7 +279,7 @@ export default function AITutor() {
                     <button
                       key={id}
                       onClick={() => {
-                        setMode(id as any);
+                        setMode(id as typeof mode);
                         setResponse(null);
                         setSelectedAnswer(null);
                       }}

@@ -53,7 +53,7 @@ export function ResumeQuestionnaire({
     "personal" | "professional" | "skills" | "experience" | "education" | "certifications"
   >("personal");
 
-  const handleInputChange = (field: keyof ResumeData, value: any) => {
+  const handleInputChange = <K extends keyof ResumeData>(field: K, value: ResumeData[K]) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -67,7 +67,7 @@ export function ResumeQuestionnaire({
     }));
   };
 
-  const updateSkill = (index: number, field: keyof Skill, value: any) => {
+  const updateSkill = <K extends keyof Skill>(index: number, field: K, value: Skill[K]) => {
     setFormData((prev) => ({
       ...prev,
       skills: prev.skills.map((skill, i) =>

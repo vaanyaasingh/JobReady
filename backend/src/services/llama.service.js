@@ -4,7 +4,7 @@
  * Env:
  * - LLAMA_API_KEY
  * - LLAMA_API_URL (e.g. https://api.groq.com/openai/v1)
- * - LLAMA_MODEL (e.g. llama-3.1-8b-instant)
+ * - LLAMA_MODEL (e.g. openai/gpt-oss-20b)
  */
 
 const getLlamaConfig = () => {

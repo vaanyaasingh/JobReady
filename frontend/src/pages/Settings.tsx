@@ -23,6 +23,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
+import { clearAuthData } from "@/lib/auth";
 
 const languages = [
   { code: "en", label: "English" },

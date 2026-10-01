@@ -192,7 +192,8 @@ export function VideoCompletionCheckbox({
           variant: "default",
         });
       }
-    } catch (error: any) {
+    } catch (err) {
+      const error = err as Error;
       console.error('[VideoCompletionCheckbox] Error:', error);
       
       let errorMessage = "Failed to mark video as completed.";

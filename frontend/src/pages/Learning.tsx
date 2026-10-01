@@ -276,7 +276,7 @@ export default function Learning() {
   ];
 
   const navigate = useNavigate();
-  const [userProgress, setUserProgress] = useState<Record<string, any>>({});
+  const [userProgress, setUserProgress] = useState<Record<string, { status?: string; lessonsCompleted?: number; hoursSpent?: number }>>({});
   const [courseVideoProgress, setCourseVideoProgress] = useState<Record<string, { completed: number; total: number }>>({});
   const [userId, setUserId] = useState<string | null>(null);
   const [language, setLanguage] = useState<"en" | "hi" | "kn" | "hinglish">("en");
@@ -364,7 +364,7 @@ export default function Learning() {
       case "course-001":
         return { completed: 0, total: beginnerVideos.length + intermediateVideos.length + advancedVideos.length };
       case "course-002":
-        return { completed: 0, total: emailVideos.length };
+        return { completed: 0, total: emailCommunicationVideos.length };
       case "course-003":
         return { completed: 0, total: englishSpeakingVideos.length + customerServiceVideos.length };
       case "course-007":
@@ -711,7 +711,7 @@ export default function Learning() {
                             courseId="course-001"
                             courseName="Microsoft Skills"
                             language={language}
-                            onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload as any).toString()}`)}
+                            onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload).toString()}`)}
                             onVideoCompleted={handleVideoCompleted}
                           />
                         </motion.div>
@@ -771,7 +771,7 @@ export default function Learning() {
                             courseId="course-002"
                             courseName="Email Communication Skills"
                             language={language}
-                            onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload as any).toString()}`)}
+                            onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload).toString()}`)}
                             onVideoCompleted={handleVideoCompleted}
                           />
                         </motion.div>
@@ -855,7 +855,7 @@ export default function Learning() {
                             courseId="course-003"
                             courseName="English Speaking and Customer Service"
                             language={language}
-                            onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload as any).toString()}`)}
+                            onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload).toString()}`)}
                             onVideoCompleted={handleVideoCompleted}
                           />
                         </motion.div>
@@ -916,7 +916,7 @@ export default function Learning() {
                               courseId="course-007"
                               courseName="Interview Preparation (RV Students)"
                               language={language}
-                              onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload as any).toString()}`)}
+                              onAskTutor={(payload) => navigate(`/tutor?${new URLSearchParams(payload).toString()}`)}
                               onVideoCompleted={handleVideoCompleted}
                             />
                           </motion.div>

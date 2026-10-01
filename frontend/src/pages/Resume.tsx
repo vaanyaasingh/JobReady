@@ -90,7 +90,7 @@ export default function Resume() {
           "course-006": "Workplace Safety",
         };
 
-        Object.entries(progressData).forEach(([courseId, progress]: [string, any]) => {
+        Object.entries(progressData).forEach(([courseId, progress]: [string, { status?: string }]) => {
           const skillName = courseToSkill[courseId];
           if (skillName && progress.status) {
             const proficiencyMap: Record<string, number> = {

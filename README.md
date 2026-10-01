@@ -98,7 +98,7 @@ NODE_ENV=development
 # Groq AI (get key at console.groq.com)
 LLAMA_API_KEY=your-groq-api-key
 LLAMA_API_URL=https://api.groq.com/openai/v1
-LLAMA_MODEL=llama-3.1-8b-instant
+LLAMA_MODEL=openai/gpt-oss-20b
 
 # Email (optional, for OTP)
 EMAIL_SERVICE=gmail
