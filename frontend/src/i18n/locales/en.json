@@ -12,13 +12,7 @@
         "heroTitle": "Learn Skills.",
         "heroSubtitle": "Get Jobs.",
         "heroDescription": "Your AI-powered vocational assistant. Discover your strengths, learn in-demand skills, and get matched with the perfect job opportunities.",
-        "availableIn": "Available in 10+ Indian Languages",
-        "stats": {
-            "students": "Students Trained",
-            "courses": "Skill Courses",
-            "placements": "Job Placements",
-            "successRate": "Success Rate"
-        },
+        "availableIn": "Available in English, Hindi & Kannada",
         "features": {
             "title": "Your Path to Employment",
             "subtitle": "A complete ecosystem designed to take you from learning to earning",
@@ -57,7 +51,7 @@
         },
         "readyToStart": {
             "title": "Ready to Start Your Journey?",
-            "desc": "Join thousands of students who have transformed their careers with JobReady",
+            "desc": "Take a quick assessment, learn new skills, and build your resume with JobReady",
             "createAccount": "Create Free Account"
         }
     },

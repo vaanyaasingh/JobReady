@@ -39,13 +39,6 @@ export default function Landing() {
     },
   ];
 
-  const stats = [
-    { value: "50K+", label: t("landing.stats.students") },
-    { value: "200+", label: t("landing.stats.courses") },
-    { value: "5000+", label: t("landing.stats.placements") },
-    { value: "95%", label: t("landing.stats.successRate") },
-  ];
-
   const languages = [
     { code: "en", label: "English" },
     { code: "hi", label: "हिन्दी" },
@@ -148,26 +141,6 @@ export default function Landing() {
                 <span>{t("common.noCreditCard")}</span>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-12 bg-accent/50">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</div>
-                <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
